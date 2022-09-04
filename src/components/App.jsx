@@ -1,18 +1,9 @@
-import { useState, useEffect } from 'react';
 import Form from 'components/Form/Form';
 import Contacts from 'components/Contacts/Contacts';
 import Find from 'components/Find/Find';
 import styled from 'styled-components';
 
 const App = () => {
-  // const [contacts, setContacts] = useState(
-  //   JSON.parse(localStorage.getItem('contacts')) ?? []
-  // );
-
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
-
   return (
     <Wrapper>
       <h1>Phonebook</h1>
