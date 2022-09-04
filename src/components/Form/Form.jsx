@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
 import { FormLabel, FormInput } from './Form.styled';
 import { Button } from 'components/Button/Button';
+import { addItem } from 'redux/store';
+import { useDispatch } from 'react-redux';
 
-const Form = ({ onSubmit }) => {
+const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -21,6 +22,8 @@ const Form = ({ onSubmit }) => {
     }
   };
 
+  const dispatch = useDispatch();
+
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -32,7 +35,7 @@ const Form = ({ onSubmit }) => {
       number,
     };
 
-    onSubmit(contact);
+    dispatch(addItem(contact));
     setName('');
     setNumber('');
   };
@@ -68,10 +71,6 @@ const Form = ({ onSubmit }) => {
       <Button type="submit">Add contact</Button>
     </form>
   );
-};
-
-Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Form;

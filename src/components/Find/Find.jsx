@@ -1,22 +1,25 @@
 import { FindLabel, FindInput } from './Find.styled';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { filterChange } from 'redux/store';
 
-const Find = ({ inputValue, onFindInput }) => {
+const Find = () => {
+  const filter = useSelector(state => state.contacts.filter);
+  const dispatch = useDispatch();
+
+  const handleFindInput = event => {
+    dispatch(filterChange(event.currentTarget.value.toLowerCase()));
+  };
+
   return (
     <FindLabel>
       Find contacts by name
       <FindInput
         type="text"
-        value={inputValue}
-        onChange={onFindInput}
+        value={filter}
+        onChange={handleFindInput}
       ></FindInput>
     </FindLabel>
   );
-};
-
-Find.propTypes = {
-  inputValue: PropTypes.string.isRequired,
-  onFindInput: PropTypes.func.isRequired,
 };
 
 export default Find;

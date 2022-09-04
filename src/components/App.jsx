@@ -5,48 +5,21 @@ import Find from 'components/Find/Find';
 import styled from 'styled-components';
 
 const App = () => {
-  const [contacts, setContacts] = useState(
-    JSON.parse(localStorage.getItem('contacts')) ?? []
-  );
-  const [filter, setFilter] = useState('');
+  // const [contacts, setContacts] = useState(
+  //   JSON.parse(localStorage.getItem('contacts')) ?? []
+  // );
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
-
-  const addContact = contact => {
-    const repeatedContact = contacts.find(elem => elem.name === contact.name);
-    if (repeatedContact) {
-      alert(`${repeatedContact.name} is already in contacts`);
-    } else {
-      setContacts([contact, ...contacts]);
-    }
-  };
-
-  const handleFindInput = event => {
-    setFilter(event.currentTarget.value.toLowerCase());
-  };
-
-  const contactsList = contacts => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter)
-    );
-  };
-
-  const deleteContact = id => {
-    setContacts(contacts.filter(contact => contact.id !== id));
-  };
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   return (
     <Wrapper>
       <h1>Phonebook</h1>
-      <Form onSubmit={addContact}></Form>
+      <Form />
       <h2>Contacts</h2>
-      <Find inputValue={filter} onFindInput={handleFindInput} />
-      <Contacts
-        contacts={contactsList(contacts)}
-        onDelete={deleteContact}
-      ></Contacts>
+      <Find />
+      <Contacts />
     </Wrapper>
   );
 };
