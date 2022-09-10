@@ -26,7 +26,6 @@ const contactsSlice = createSlice({
     },
 
     filterChange: (state, action) => {
-      console.log(state);
       return {
         ...state,
         filter: action.payload,
