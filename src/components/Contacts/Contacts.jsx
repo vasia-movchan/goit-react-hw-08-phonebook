@@ -2,7 +2,7 @@ import { Button } from 'components/Button/Button';
 import { ContactsItem } from 'components/ContactsItem/ContactsItem';
 import { ContactsList } from './Contacts.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeItem } from 'redux/store';
+import { removeItem } from 'redux/contactsSlice';
 
 const Contacts = () => {
   const contacts = useSelector(state => state.contacts.items);

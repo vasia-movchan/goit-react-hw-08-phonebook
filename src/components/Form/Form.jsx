@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { FormLabel, FormInput } from './Form.styled';
 import { Button } from 'components/Button/Button';
-import { addItem } from 'redux/store';
+import { addItem } from 'redux/contactsSlice';
 import { useDispatch } from 'react-redux';
 
 const Form = () => {

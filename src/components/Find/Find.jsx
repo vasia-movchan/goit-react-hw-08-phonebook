@@ -1,9 +1,10 @@
 import { FindLabel, FindInput } from './Find.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterChange } from 'redux/store';
+import { filterChange } from 'redux/contactsSlice';
 
 const Find = () => {
   const filter = useSelector(state => state.contacts.filter);
+
   const dispatch = useDispatch();
 
   const handleFindInput = event => {
