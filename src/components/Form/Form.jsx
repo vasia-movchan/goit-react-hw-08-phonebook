@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { nanoid } from 'nanoid';
 import { FormLabel, FormInput } from './Form.styled';
 import { Button } from 'components/Button/Button';
-import { addItem } from 'redux/contactsSlice';
 import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contacts/contacts-operations';
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -28,14 +27,13 @@ const Form = () => {
     event.preventDefault();
     const form = event.currentTarget;
     const name = form.elements.name.value;
-    const number = form.elements.number.value;
+    const phone = form.elements.number.value;
     const contact = {
-      id: nanoid(),
       name,
-      number,
+      phone,
     };
 
-    dispatch(addItem(contact));
+    dispatch(addContact(contact));
     setName('');
     setNumber('');
   };
