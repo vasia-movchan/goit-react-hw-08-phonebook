@@ -3,19 +3,28 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from 'services/api/auth';
 
 export const signup = createAsyncThunk(
-  'auth/singup',
+  'auth/signup',
   async (data, thunkAPI) => {
     try {
       const result = await api.signup(data);
       return result;
     } catch ({ response }) {
       const { status, data } = response;
-      console.log(status, data.keyValue.email);
       const error = { status, message: data.keyValue.email };
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
+
+export const login = createAsyncThunk('auth/login', async (data, thunkAPI) => {
+  try {
+    const result = await api.login(data);
+    return result;
+  } catch ({ response }) {
+    const error = response.status;
+    return thunkAPI.rejectWithValue(error);
+  }
+});
 
 // const isDublicate = ({ name }, contacts) => {
 //   const normalizedName = name.toLowerCase();

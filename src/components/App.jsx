@@ -8,7 +8,7 @@ import Header from 'components/Header/Header';
 const Home = lazy(() => import('components/Home/Home'));
 const Phonebook = lazy(() => import('components/Phonebook/Phonebook'));
 const SingupForm = lazy(() => import('components/SingupForm/SingupForm'));
-// const Cast = lazy(() => import('components/Cast/Cast'));
+const LoginForm = lazy(() => import('components/LoginForm/LoginForm'));
 // const Reviews = lazy(() => import('components/Reviews/Reviews'));
 
 const App = () => {
@@ -27,11 +27,21 @@ const App = () => {
             element={
               <SingupForm>
                 {statusError &&
+                  messageError &&
                   alert(`User ${messageError} is already registered`)}
               </SingupForm>
             }
           />
-          {/* <Route path="/login" element={}></Route> */}
+          <Route
+            path="/login"
+            element={
+              <LoginForm>
+                {statusError &&
+                  !messageError &&
+                  alert('Invalid login or password')}
+              </LoginForm>
+            }
+          ></Route>
           <Route path="*" element={<Home />} />
         </Routes>
       </Suspense>
