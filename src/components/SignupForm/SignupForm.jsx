@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { FormLabel, FormInput, StyledForm } from './SingupForm.styled';
+import { FormLabel, FormInput, StyledForm } from './SignupForm.styled';
 import { Button } from 'components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { signup } from 'redux/auth/auth-operations';
 import { isAuth } from 'redux/auth/auth-selectors';
 
-const SingupForm = () => {
+const SignupForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -98,4 +98,4 @@ const SingupForm = () => {
   );
 };
 
-export default SingupForm;
+export default SignupForm;
