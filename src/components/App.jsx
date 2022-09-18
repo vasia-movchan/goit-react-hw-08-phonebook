@@ -1,34 +1,42 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getAuthError } from 'redux/auth/auth-selectors';
 
-import Form from 'components/Form/Form';
-import Contacts from 'components/Contacts/Contacts';
-import Find from 'components/Find/Find';
-import styled from 'styled-components';
 import Header from 'components/Header/Header';
 
+const Home = lazy(() => import('components/Home/Home'));
+const Phonebook = lazy(() => import('components/Phonebook/Phonebook'));
+const SingupForm = lazy(() => import('components/SingupForm/SingupForm'));
+// const Cast = lazy(() => import('components/Cast/Cast'));
+// const Reviews = lazy(() => import('components/Reviews/Reviews'));
+
 const App = () => {
+  const { status: statusError, message: messageError } =
+    useSelector(getAuthError);
+
   return (
     <>
       <Header />
-      <Wrapper>
-        <h1>Phonebook</h1>
-        <Form />
-        <h2>Contacts</h2>
-        <Find />
-        <Contacts />
-      </Wrapper>
+      <Suspense fallback={<p>...Load page</p>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contacts" element={<Phonebook />} />
+          <Route
+            path="/register"
+            element={
+              <SingupForm>
+                {statusError &&
+                  alert(`User ${messageError} is already registered`)}
+              </SingupForm>
+            }
+          />
+          {/* <Route path="/login" element={}></Route> */}
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </Suspense>
     </>
   );
 };
-
-const Wrapper = styled.div`
-  padding: 8px;
-  width: 400px;
-  margin: 0 auto;
-  background-color: #c2e0fa;
-  border-radius: 4px;
-  box-shadow: 2px 3px 13px 0px rgba(0, 0, 0, 0.73); ;
-`;
 
 export default App;
