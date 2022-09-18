@@ -1,17 +1,24 @@
+import { lazy, Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
 import Form from 'components/Form/Form';
 import Contacts from 'components/Contacts/Contacts';
 import Find from 'components/Find/Find';
 import styled from 'styled-components';
+import Header from 'components/Header/Header';
 
 const App = () => {
   return (
-    <Wrapper>
-      <h1>Phonebook</h1>
-      <Form />
-      <h2>Contacts</h2>
-      <Find />
-      <Contacts />
-    </Wrapper>
+    <>
+      <Header />
+      <Wrapper>
+        <h1>Phonebook</h1>
+        <Form />
+        <h2>Contacts</h2>
+        <Find />
+        <Contacts />
+      </Wrapper>
+    </>
   );
 };
 
