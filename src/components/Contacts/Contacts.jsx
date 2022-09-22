@@ -27,7 +27,7 @@ const Contacts = () => {
     <ContactsList>
       {contactsWithFilter.map(contact => (
         <ContactsItem key={contact.id}>
-          {contact.name}: {contact.phone}
+          {contact.name}: {contact.number}
           <Button handleClickDelete={() => dispatch(removeContact(contact.id))}>
             Delete
           </Button>

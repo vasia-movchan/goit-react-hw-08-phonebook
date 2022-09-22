@@ -28,7 +28,6 @@ const authSlice = createSlice({
     [signup.rejected]: (store, action) => {
       store.loading = false;
       store.error = action.payload;
-      console.log(action.payload);
     },
 
     [login.pending]: store => {

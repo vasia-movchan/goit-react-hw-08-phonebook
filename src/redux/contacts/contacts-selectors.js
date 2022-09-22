@@ -1,3 +1,3 @@
-const contactsSelector = state => state.contacts.items;
+export const contactsSelector = state => state.contacts.items;
 
-export { contactsSelector };
+// export { contactsSelector };
