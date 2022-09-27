@@ -1,7 +1,7 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { getAuthError } from 'redux/auth/auth-selectors';
+import { current } from 'redux/auth/auth-operations';
 
 import Header from 'components/Header/Header';
 import PrivateRoute from 'components/Routes/PrivateRoute/PrivateRoute';
@@ -14,10 +14,11 @@ const LoginForm = lazy(() => import('components/LoginForm/LoginForm'));
 // const Reviews = lazy(() => import('components/Reviews/Reviews'));
 
 const App = () => {
-  const { status: statusError, message: messageError } =
-    useSelector(getAuthError);
+  const dispatch = useDispatch();
 
-  // const error = useSelector(getAuthError);
+  useEffect(() => {
+    dispatch(current());
+  }, [dispatch]);
 
   return (
     <>
@@ -31,26 +32,8 @@ const App = () => {
           </Route>
 
           <Route element={<PublicRoute />}>
-            <Route
-              path="/register"
-              element={
-                <SignupForm>
-                  {statusError &&
-                    messageError &&
-                    alert(`User ${messageError} is already registered`)}
-                </SignupForm>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <LoginForm>
-                  {statusError &&
-                    !messageError &&
-                    alert('Invalid login or password')}
-                </LoginForm>
-              }
-            />
+            <Route path="/register" element={<SignupForm />} />
+            <Route path="/login" element={<LoginForm />} />
           </Route>
 
           <Route path="*" element={<Home />} />

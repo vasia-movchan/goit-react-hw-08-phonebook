@@ -5,10 +5,14 @@ import { Button } from 'components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from 'redux/auth/auth-operations';
 import { isAuth } from 'redux/auth/auth-selectors';
+// import { getAuthError } from 'redux/auth/auth-selectors';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // const { status: statusError, message: messageError } =
+  //   useSelector(getAuthError);
 
   const handleInputChange = event => {
     switch (event.currentTarget.name) {

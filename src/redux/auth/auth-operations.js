@@ -11,6 +11,7 @@ export const signup = createAsyncThunk(
     } catch ({ response }) {
       const { status, data } = response;
       const error = { status, message: data.keyValue.email };
+      alert(`User ${data.keyValue.email} is already registered`);
       return thunkAPI.rejectWithValue(error);
     }
   }
@@ -23,7 +24,31 @@ export const login = createAsyncThunk('auth/login', async (data, thunkAPI) => {
   } catch ({ response }) {
     const { status } = response;
     const error = { status };
-    console.log(error);
+    alert('Invalid login or password');
+    return thunkAPI.rejectWithValue(error);
+  }
+});
+
+export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  try {
+    const result = await api.logout();
+    return result;
+  } catch ({ response }) {
+    const { status } = response;
+    const error = { status };
+    return thunkAPI.rejectWithValue(error);
+  }
+});
+
+export const current = createAsyncThunk('auth/current', async (_, thunkAPI) => {
+  try {
+    const { auth } = thunkAPI.getState();
+    const result = await api.current(auth.token);
+    console.log(result);
+    return result;
+  } catch ({ response }) {
+    const { status } = response;
+    const error = { status };
     return thunkAPI.rejectWithValue(error);
   }
 });

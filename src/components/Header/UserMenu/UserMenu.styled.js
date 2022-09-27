@@ -22,6 +22,6 @@ export const MenuList = styled.ul`
 `;
 
 export const StyledSpan = styled.span`
-  font-size: 20px;
+  font-size: 18px;
   margin-right: 8px;
 `;

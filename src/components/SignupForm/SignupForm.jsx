@@ -5,11 +5,16 @@ import { Button } from 'components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { signup } from 'redux/auth/auth-operations';
 import { isAuth } from 'redux/auth/auth-selectors';
+// import { useSelector } from 'react-redux';
+// import { getAuthError } from 'redux/auth/auth-selectors';
 
 const SignupForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // const { status: statusError, message: messageError } =
+  //   useSelector(getAuthError);
 
   const handleInputChange = event => {
     switch (event.currentTarget.name) {
