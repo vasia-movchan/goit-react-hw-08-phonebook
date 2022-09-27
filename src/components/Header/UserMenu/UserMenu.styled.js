@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const StyledLink = styled(Link)`
-  font-size: 20px;
+  font-size: 18px;
   color: black;
   text-decoration: none;
   margin-right: 16px;
@@ -14,6 +14,7 @@ export const StyledLink = styled(Link)`
 
 export const MenuList = styled.ul`
   display: flex;
+  align-items: center;
   list-style: none;
   padding: 16px;
   margin: 0;

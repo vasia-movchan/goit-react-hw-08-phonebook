@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { FormLabel, FormInput, StyledForm } from './SignupForm.styled';
-import { Button } from 'components/Button/Button';
+// import { Button1 } from 'components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { signup } from 'redux/auth/auth-operations';
 import { isAuth } from 'redux/auth/auth-selectors';
+import { Button } from '@mui/material';
 // import { useSelector } from 'react-redux';
 // import { getAuthError } from 'redux/auth/auth-selectors';
 
@@ -98,7 +99,9 @@ const SignupForm = () => {
         ></FormInput>
       </FormLabel>
 
-      <Button type="submit">Register</Button>
+      <Button type="submit" variant="contained" size="small">
+        Register
+      </Button>
     </StyledForm>
   );
 };

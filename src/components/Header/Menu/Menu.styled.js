@@ -14,6 +14,7 @@ export const StyledNavLink = styled(NavLink)`
 
 export const MenuList = styled.ul`
   display: flex;
+  align-items: center;
   list-style: none;
   padding: 16px;
   margin: 0;

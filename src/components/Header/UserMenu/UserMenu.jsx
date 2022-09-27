@@ -1,8 +1,8 @@
 import { StyledLink, MenuList, StyledSpan } from './UserMenu.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { user, isAuth } from 'redux/auth/auth-selectors';
-import { Button } from 'components/Button/Button';
 import { logout } from 'redux/auth/auth-operations';
+import { Button } from '@mui/material';
 
 const UserMenu = () => {
   const { email } = useSelector(user);
@@ -22,7 +22,12 @@ const UserMenu = () => {
       </li>
       <li>
         {userLogin ? (
-          <Button type="button" onLogout={onLogout}>
+          <Button
+            type="submit"
+            variant="contained"
+            size="small"
+            onClick={onLogout}
+          >
             Logout
           </Button>
         ) : (

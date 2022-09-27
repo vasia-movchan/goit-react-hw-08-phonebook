@@ -6,6 +6,6 @@ export const FindLabel = styled.label`
 
 export const FindInput = styled.input`
   display: block;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 8px;
 `;

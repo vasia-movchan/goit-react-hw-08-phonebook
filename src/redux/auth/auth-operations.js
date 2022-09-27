@@ -44,7 +44,6 @@ export const current = createAsyncThunk('auth/current', async (_, thunkAPI) => {
   try {
     const { auth } = thunkAPI.getState();
     const result = await api.current(auth.token);
-    console.log(result);
     return result;
   } catch ({ response }) {
     const { status } = response;

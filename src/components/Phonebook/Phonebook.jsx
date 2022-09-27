@@ -6,9 +6,25 @@ import Find from 'components/Find/Find';
 const Phonebook = () => {
   return (
     <StyledPhonebook>
-      <h1>Phonebook</h1>
+      <h1
+        style={{
+          textAlign: 'center',
+          marginBottom: '8px',
+        }}
+      >
+        Phonebook
+      </h1>
+
       <Form />
-      <h2>Contacts</h2>
+      <h2
+        style={{
+          textAlign: 'center',
+          marginBottom: '8px',
+          marginTop: '8px',
+        }}
+      >
+        Contacts
+      </h2>
       <Find />
       <Contacts />
     </StyledPhonebook>

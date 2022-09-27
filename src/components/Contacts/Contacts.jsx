@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
-import { Button } from 'components/Button/Button';
+import { Button } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 import { ContactsItem } from 'components/ContactsItem/ContactsItem';
-import { ContactsList } from './Contacts.styled';
+import { ContactsList, ContactsName, ContactsNumber } from './Contacts.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { filterSelector } from 'redux/filter/filter-selector';
 import { contactsSelector } from 'redux/contacts/contacts-selectors';
@@ -27,8 +29,17 @@ const Contacts = () => {
     <ContactsList>
       {contactsWithFilter.map(contact => (
         <ContactsItem key={contact.id}>
-          {contact.name}: {contact.number}
-          <Button handleClickDelete={() => dispatch(removeContact(contact.id))}>
+          <ContactsName>
+            {contact.name}
+            <ContactsNumber>{contact.number}</ContactsNumber>
+          </ContactsName>
+
+          <Button
+            variant="contained"
+            onClick={() => dispatch(removeContact(contact.id))}
+            startIcon={<DeleteIcon />}
+            size="small"
+          >
             Delete
           </Button>
         </ContactsItem>
